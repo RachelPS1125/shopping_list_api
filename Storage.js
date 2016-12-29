@@ -1,3 +1,4 @@
+'use strict';
 class Storage {
 	constructor(){
 		this.items = [];
