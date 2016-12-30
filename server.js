@@ -4,9 +4,9 @@ var mongoose = require('mongoose');
 var Item = require('./models/item');
 
 var mongoUrl = (process.env.NODE_ENV === 'production' ?
-                    'mongodb://localhost/shopping-list' :
+                    'mongodb://' + process.env.MONGO_USERNAME + ':' + process.env.MONGO_PASSWORD + '@ds149268.mlab.com:49268/shoppinglist' :
                     'mongodb://localhost/shopping-list-dev');
-
+                    
 var jsonParser = bodyParser.json();
 
 var app = express(); 
@@ -62,7 +62,7 @@ var runServer = function(callback) {
         if (err && callback) {
             return callback(err);
         }
-        app.listen(8080, function() {
+        app.listen(process.env.PORT||8080, function() {
             if (callback) {
                 callback();
             }

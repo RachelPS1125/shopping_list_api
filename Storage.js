@@ -28,7 +28,7 @@ class Storage {
 	delete(id){
 		var foundAt =this.items.findIndex(function(el){
 			return el.id === parseInt(id);
-		})
+		});
 		this.items.splice(foundAt, 1);
 	}
 	clear(){
